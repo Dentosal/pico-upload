@@ -1,0 +1,54 @@
+html, body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+body > * {
+    margin: 50px;
+}
+
+body.highlight {
+  background-color: purple;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px;
+  background: #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button:hover {
+  background: #ddd;
+}
+
+.hidden {
+  display: none;
+}
+
+#log {
+    background: #333;
+    color: #fff;
+    font-family: Monoid, "Courier New", monospace;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-height: 50%;
+    text-align: left;
+}
+
+#log > p {
+  padding: 0;
+  margin: 0;
+}
+
+#log a:link {
+  color: #fff;
+}

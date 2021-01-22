@@ -166,11 +166,14 @@ async fn main() {
 
     let free_space_route = warp::path("free_space").and_then(free_space);
 
+    let index_route = warp::path::end().and(warp::fs::file("static/index.html"));
+
     let static_route = warp::path("static").and(warp::fs::dir("static"));
 
     let router = upload_route
         .or(download_route)
         .or(free_space_route)
+        .or(index_route)
         .or(static_route)
         .recover(handle_rejection);
 

@@ -147,6 +147,12 @@ async fn handle_rejection(err: Rejection) -> std::result::Result<impl Reply, Inf
 
 #[tokio::main]
 async fn main() {
+    let port: u16 = std::env::args()
+        .skip(1)
+        .last()
+        .map(|p| p.parse().expect("Port must be an integer"))
+        .unwrap_or(8000);
+
     let dir = uploads_dir();
 
     let upload_route = warp::path("upload")
@@ -168,5 +174,5 @@ async fn main() {
         .or(static_route)
         .recover(handle_rejection);
 
-    warp::serve(router).run(([0, 0, 0, 0], 8000)).await;
+    warp::serve(router).run(([127, 0, 0, 1], port)).await;
 }
